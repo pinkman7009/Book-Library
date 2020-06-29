@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const indexRouter = require('./routes/index');
+const authorRouter = require('./routes/authors');
 const mongoose = require('mongoose');
 
 // Middlewares
@@ -16,8 +17,9 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
-app.use('/', indexRouter);
 
+app.use('/', indexRouter);
+app.use('/authors', authorRouter);
 // Connecting to DB
 mongoose.connect(process.env.DATABASE_URL, {
 	useNewUrlParser: true,
@@ -25,7 +27,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Conencted to Database'));
+db.once('open', () => console.log('Connected to Database'));
 
 // Starting the server
 const PORT = process.env.PORT || 3000;
