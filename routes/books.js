@@ -17,7 +17,21 @@ const upload = multer({
 
 // All Books Route
 router.get('/', async (req, res) => {
-	res.send('All Books');
+	let searchParams = {};
+	if (req.query.title != null && req.query.title !== '') {
+		searchParams.title = new RegExp(req.query.title, 'i');
+	}
+	// console.log(req.query.title);
+	try {
+		const books = await Book.find(searchParams);
+
+		res.render('books/index', {
+			books: books,
+			searchOptions: req.query
+		});
+	} catch (err) {
+		res.redirect('/');
+	}
 });
 
 // New Book Route
