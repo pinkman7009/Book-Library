@@ -42,4 +42,10 @@ router.post('/', async (req, res) => {
 	}
 });
 
+// Delete Author
+router.delete('/:id', (req, res) => {
+	res.send(`Deleted Author with id : ${req.params.id}`);
+	console.log(req.params.id);
+});
+
 module.exports = router;
