@@ -42,10 +42,20 @@ router.post('/', async (req, res) => {
 	}
 });
 
+// Show Author
+
+router.get('/:id', (req, res) => {
+	res.send(`Show Author ${req.params.id}`);
+	console.log(req.params.id);
+});
+
 // Delete Author
 router.delete('/:id', (req, res) => {
-	res.send(`Deleted Author with id : ${req.params.id}`);
-	console.log(req.params.id);
+	try {
+		res.send(`Deleted Author with id ${req.params.id}`);
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 module.exports = router;

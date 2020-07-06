@@ -8,6 +8,9 @@
 <br>
 <% authors.forEach(author => { %>
     <div><%= author.name %></div>
-    <button id="delete-btn" data-id=<%= author.id %>>Delete</button>
+    <a href="/authors/<%= author.id %>" id="view-btn" data-id=<%= author.id %>>View</a>
+    <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+      <button type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
+    </form>
 <% });  %>
 
