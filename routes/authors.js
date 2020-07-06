@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Author = require('../models/Author');
+const Book = require('../models/Book');
 
 // All Authors Route
 router.get('/', async (req, res) => {
@@ -32,7 +33,7 @@ router.post('/', async (req, res) => {
 
 	try {
 		const newAuthor = await author.save();
-		// res.redirect(`authors/${newAuthor.id}`);
+		res.redirect(`authors/${newAuthor.id}`);
 		res.redirect('authors');
 	} catch (err) {
 		res.render('authors/new', {
@@ -44,17 +45,65 @@ router.post('/', async (req, res) => {
 
 // Show Author
 
-router.get('/:id', (req, res) => {
-	res.send(`Show Author ${req.params.id}`);
-	console.log(req.params.id);
+router.get('/:id', async (req, res) => {
+	try {
+		const author = await Author.findById(req.params.id);
+		const books = await Book.find({ author: author.id }).limit(10).exec();
+
+		res.render('authors/show', {
+			author: author,
+			books: books
+		});
+	} catch (err) {
+		res.redirect('/');
+	}
 });
 
-// Delete Author
-router.delete('/:id', (req, res) => {
+// Edit Author
+router.get('/:id/edit', async (req, res) => {
 	try {
-		res.send(`Deleted Author with id ${req.params.id}`);
+		const author = await Author.findById(req.params.id);
+		res.render('authors/edit', { author: author });
 	} catch (err) {
-		console.log(err);
+		res.redirect('/authors');
+	}
+});
+
+// Update Author
+
+router.put('/:id', async (req, res) => {
+	try {
+		const author = await Author.findById(req.params.id);
+
+		author.name = req.body.name;
+
+		await author.save();
+
+		res.redirect(`/authors/${author.id}`);
+	} catch (err) {
+		if (author == null) res.redirect('/');
+		else {
+			res.render('authors/edit', {
+				author: author,
+				errorMessage: 'Error updating author'
+			});
+		}
+	}
+});
+// Delete Author
+router.delete('/:id', async (req, res) => {
+	let author;
+	try {
+		author = await Author.findById(req.params.id);
+
+		await author.remove();
+
+		res.redirect(`/authors`);
+	} catch (err) {
+		if (author == null) res.redirect('/');
+		else {
+			res.redirect(`/authors/${author.id}`);
+		}
 	}
 });
 
