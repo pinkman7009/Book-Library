@@ -20,7 +20,7 @@
 </div>
 <div>
   <label>Publish Date</label>
-  <input type="date" name="publishDate" value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T') %>">
+  <input type="date" name="publishDate" value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
 
 </div>
 
@@ -36,5 +36,5 @@
 
 <div>
   <label>Description</label>
-  <textarea name="description"><%= book.decription %></textarea>
+  <textarea name="description"><%= book.description %></textarea>
 </div>

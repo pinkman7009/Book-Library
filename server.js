@@ -42,7 +42,7 @@ db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
 
 // Starting the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const d = new Date();
 app.listen(PORT, () => {
