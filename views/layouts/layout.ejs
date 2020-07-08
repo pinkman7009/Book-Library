@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
   <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
   <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
   <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
   <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
@@ -16,11 +18,30 @@
 </head>
 <body>
 
-  <%- include('../partials/headers.ejs') %>
-  <%- include('../partials/errorMessage.ejs') %>
-  <br>
-  <%- body %>
-  <br>
+    <nav id="main-nav">
+      <div class="container">
+        <%- include('../partials/headers.ejs') %>
+      </div>
+  
+    </nav>
+  
+    <main>
+      <%- include('../partials/errorMessage.ejs') %>
+     
+      <%- body %>
+    </main>
  
+     
+    <div class="footer-container">
+      <footer id="main-footer" class="py-2">
+        <div class="container">
+          <p>&copy 2020 Bookify All Rights Reserved </p>
+        </div>
+      
+      </footer>  
+    </div>
+
+
+
 </body>
 </html>

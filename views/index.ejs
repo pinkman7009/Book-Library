@@ -1,8 +1,40 @@
-<h2>Recently Added Books</h2>
-<br>
-<div>
-  <% books.forEach(book => { %>
-    <a href="/books/<%= book.id %>">View Book</a>
-      <img height="150" width="100" src="<%= book.coverImagePath %>" alt="">
-  <% });  %>
+
+<header id="showcase">
+
+  <div class="container">
+
+    <div class="showcase-content">
+      <h1 class="primary-text">Spotify for Books</h1>
+      <p class="secondary-text">An online library to arrange your books</p>
+
+    </div>
+  </div>
+
+</header>
+
+<% if(books.length > 0){ %>
+
+
+    <div class="container">
+      <h2 class="secondary-text p-2">Recently Added Books</h2>
+    
+      <div class="book-gallery">
+        <% books.forEach(book => { %>
+    
+          <div class="book">
+            <a href="/books/<%= book.id %>">
+              <img src="<%= book.coverImagePath %>" alt="">
+            </a>
+          </div>
+         
+        <% });  %>
+      </div>
+    </div>
+  
+<% } else { %>
+<div class="container">
+  <div class="message-box">
+    <p class="secondary-text">You have no books added yet!</p>
+  </div>
 </div>
+<% } %>
