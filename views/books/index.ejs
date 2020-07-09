@@ -1,4 +1,6 @@
 <div class="container">
+
+  <% if(books.length > 0) { %>
   <h2 class="secondary-text p-2">Search your Books!</h2>
 
 <form action="/books" method="GET">
@@ -20,7 +22,7 @@
     </div>
     
     <div class="btn-group">
-      <button class="btn btn-primary" type="submit">Search</button>
+      <button class="btn btn-dark" type="submit">Search</button>
     </div>
 
     
@@ -40,5 +42,14 @@
    
   <% });  %>
 </div>
+
+<% } else { %>
+
+  <div class="main-form" id="no-book-message">
+    <h2 class="secondary-text p-2" >Oops! You don't have any books right now! Let's go add some!</h2>
+    <a class="btn btn-dark" href="/books/new">Add Book</a>
+  </div>
+
+<% } %>  
 
 </div>

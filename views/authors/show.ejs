@@ -1,16 +1,35 @@
-<h2><%= author.name %></h2>
-<a href="/authors/<%= author.id %>/edit">Edit</a>
-<form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
-  <button type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
-</form>
+<div class="container">
 
-<% if(books.length > 0 ){ %>
- <h2>Books By Author</h2> 
-<div>
-  <% books.forEach(book => { %>
-    <a href="/books/<%= book.id %>">
-      <img height="150" width="100" src="<%= book.coverImagePath %>" alt="">
-    </a>
-  <% });  %>
+
+  <div class="main-form" id="show-author-form">
+    <h2 class="secondary-text"><%= author.name %></h2>
+  
+    <div class="btn-group">
+  
+      <a class="btn btn-dark" href="/authors/<%= author.id %>/edit">Edit</a>
+      <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+        <button class="btn btn-primary" type="submit" data-id=<%= author.id %>>Delete</button>
+      </form>
+  
+    </div>
+
+  </div>
+
+
+  
+  <% if(books.length > 0 ){ %>
+   <h2 class="secondary-text p-2">Books By Author</h2> 
+  <div class="book-gallery">
+    <% books.forEach(book => { %>
+
+      <div class="book">
+        <a href="/books/<%= book.id %>">
+          <img height="150" width="100" src="<%= book.coverImagePath %>" alt="">
+        </a>
+
+      </div>
+    <% });  %>
+  </div>
+  <% } %>
+
 </div>
-<% } %>

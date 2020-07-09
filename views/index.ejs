@@ -33,8 +33,16 @@
   
 <% } else { %>
 <div class="container">
-  <div class="message-box">
-    <p class="secondary-text">You have no books added yet!</p>
+
+  <div class="main-form" id="no-book-message-landing-page">
+    <h2 class="secondary-text p-2">You have no books added yet! Let's add some authors and books to get your online library kicking!</h2>
+
+    <div class="btn-group">
+      <a class="btn btn-dark" href="/books/new">Add Book</a>
+      <a class="btn btn-dark" href="/authors/new">Add Author</a>
+
+    </div>
+
   </div>
 </div>
 <% } %>

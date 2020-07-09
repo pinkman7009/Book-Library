@@ -1,7 +1,21 @@
-<h2>Edit Book</h2>
-<form  method="POST" action="/books/<%= book.id %>?_method=PUT">
+<div class="container">
+  <h2 class="secondary-text p-2">Edit Book</h2>
+  <form  method="POST" action="/books/<%= book.id %>?_method=PUT">
+  
+    <div class="main-form">
 
-  <%- include('_form_fields') %>
-  <a href="/books">Cancel</a>
-  <button type="submit">Update</button>
-</form>
+      <%- include('_form_fields') %>
+
+      <div class="btn-group">
+
+        <a class="btn btn-primary" href="/books">Cancel</a>
+  
+        <button class="btn btn-dark" type="submit">Update</button>
+        
+
+      </div>
+    </div>
+
+  </form>
+
+</div>

@@ -1,4 +1,6 @@
 <div class="container">
+
+  <% if(authors.length > 0) { %> 
   <h2 class="secondary-text p-2">Search Authors</h2>
   
   <form action="/authors" method="GET">
@@ -10,21 +12,43 @@
   
       </div>
       <div class="btn-group">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-dark" type="submit">Search</button>
 
       </div>
 
     </div>
   </form>
-  <br>
-  <% authors.forEach(author => { %>
-      <div><%= author.name %></div>
-      <a href="/authors/<%= author.id %>" id="view-btn" data-id=<%= author.id %>>View</a>
-      <a href="/authors/<%= author.id %>/edit" id="edit-btn" data-id=<%= author.id %>>Edit</a>
-      <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
-        <button type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
-      </form>
-  <% });  %>
+
+  <div id="author-gallery">
+
+    <% authors.forEach(author => { %>
+
+        <div class="author-card">
+
+          <h2><%= author.name %></h2>
+    
+          <div class="btn-group">
+            <a href="/authors/<%= author.id %>" id="view-btn" class="btn btn-primary"data-id=<%= author.id %>>View</a>
+          <a href="/authors/<%= author.id %>/edit" class="btn btn-primary" id="edit-btn" data-id=<%= author.id %>>Edit</a>
+          <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+            <button class="btn btn-primary" type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
+          </form>
+          </div>
+
+        </div>
+        
+    <% });  %>
+  </div>
+
+<% } else { %>
+
+  <div class="main-form" id="no-author-message">
+
+    <h2 class="secondary-text p-2" >Oops! You don't have any authors right now! Let's go add some!</h2>
+    <a class="btn btn-dark" href="/authors/new">Add Author</a>
+  </div>
+
+<% } %>
 
 </div>
 
