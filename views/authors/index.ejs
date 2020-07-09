@@ -1,17 +1,30 @@
-<h2>Search Authors</h2>
+<div class="container">
+  <h2 class="secondary-text p-2">Search Authors</h2>
+  
+  <form action="/authors" method="GET">
 
-<form action="/authors" method="GET">
-  <label>Name</label>
-  <input type="text" name="name" value="<%= searchOptions.name %>">
-  <button type="submit">Search</button>
-</form>
-<br>
-<% authors.forEach(author => { %>
-    <div><%= author.name %></div>
-    <a href="/authors/<%= author.id %>" id="view-btn" data-id=<%= author.id %>>View</a>
-    <a href="/authors/<%= author.id %>/edit" id="edit-btn" data-id=<%= author.id %>>Edit</a>
-    <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
-      <button type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
-    </form>
-<% });  %>
+    <div class="main-form">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= searchOptions.name %>">
+  
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" type="submit">Search</button>
+
+      </div>
+
+    </div>
+  </form>
+  <br>
+  <% authors.forEach(author => { %>
+      <div><%= author.name %></div>
+      <a href="/authors/<%= author.id %>" id="view-btn" data-id=<%= author.id %>>View</a>
+      <a href="/authors/<%= author.id %>/edit" id="edit-btn" data-id=<%= author.id %>>Edit</a>
+      <form  method="POST" action="/authors/<%= author.id %>?_method=DELETE">
+        <button type="submit" id="delete-btn" data-id=<%= author.id %>>Delete</button>
+      </form>
+  <% });  %>
+
+</div>
 
