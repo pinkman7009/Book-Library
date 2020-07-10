@@ -91,6 +91,14 @@ form .btn {
 	height: calc(var(--book-width)/0.75);
 }
 
+/* Error Messages */
+#no-book-message-landing-page .btn-group {
+	margin: 0 !important;
+}
+#no-book-message-landing-page .btn-group .btn {
+	font-size: 1rem;
+}
+
 /* For Ipad and other Tablets */
 @media (min-width: 750px) and (max-width: 800px) {
 	#main-nav ul li a {
