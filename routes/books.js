@@ -129,28 +129,30 @@ async function renderEditPage(res, book, hasError = false) {
 }
 
 async function renderFormPage(res, book, form, hasError = false) {
+	let params;
 	try {
 		const authors = await Author.find();
-		const params = {
+		params = {
 			authors: authors,
 			book: book
 		};
+
 		if (hasError) {
 			if (form === 'edit') {
-				params.errorMessage = 'Error Updating Book';
+				params.errorMessage = 'Error Updating Book: Cannot leave field empty!';
 			} else {
-				params.errorMesage = 'Error Creating Book';
+				params.errorMessage = 'Error Creating Book: Cannot leave field empty!';
 			}
 		}
 
 		res.render(`books/${form}`, params);
 	} catch (err) {
-		res.redirect('books');
+		res.render(`books/${form}`, params);
 	}
 }
 
 function saveCover(book, coverEncoded) {
-	if (coverEncoded == null) return;
+	if (coverEncoded == null || coverEncoded == '') return;
 	const cover = JSON.parse(coverEncoded);
 	if (cover != null && imageMimeTypes.includes(cover.type)) {
 		book.coverImage = new Buffer.from(cover.data, 'base64');

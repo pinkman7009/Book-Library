@@ -34,11 +34,10 @@ router.post('/', async (req, res) => {
 	try {
 		const newAuthor = await author.save();
 		res.redirect(`authors/${newAuthor.id}`);
-		res.redirect('authors');
 	} catch (err) {
 		res.render('authors/new', {
 			author: author,
-			errorMessage: 'Error creating Author'
+			errorMessage: 'Error creating Author. Cannot leave field empty!'
 		});
 	}
 });
@@ -72,8 +71,9 @@ router.get('/:id/edit', async (req, res) => {
 // Update Author
 
 router.put('/:id', async (req, res) => {
+	let author;
 	try {
-		const author = await Author.findById(req.params.id);
+		author = await Author.findById(req.params.id);
 
 		author.name = req.body.name;
 
@@ -85,7 +85,7 @@ router.put('/:id', async (req, res) => {
 		else {
 			res.render('authors/edit', {
 				author: author,
-				errorMessage: 'Error updating author'
+				errorMessage: 'Error updating author: Cannot leave field empty!'
 			});
 		}
 	}

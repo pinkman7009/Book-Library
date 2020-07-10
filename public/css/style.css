@@ -43,6 +43,9 @@ a {
 	--btn-secondary-color: #ff6b6b;
 	--form-color: #82ccdd;
 	--card-color: #e3f6f5;
+	--error-color: #e58a8a;
+	--border-color: #d63447;
+	--error-message-color: #84142d;
 }
 /* Utility Classes */
 
@@ -293,6 +296,17 @@ form {
 #no-author-message {
 	margin-top: 6rem;
 	text-align: center;
+}
+.error-message {
+	text-align: center;
+	background: var(--error-color);
+	border-color: var(--border-color);
+	border: 2px solid;
+	margin-top: 2rem;
+	padding: 1rem;
+	border-radius: 5px;
+	font-size: 1.5rem;
+	color: var(--error-message-color);
 }
 #no-book-message-landing-page {
 	margin-top: 4rem;
