@@ -7,6 +7,7 @@
 
 html {
 	height: 100%;
+	overflow-x: hidden !important;
 }
 
 body {
@@ -283,8 +284,8 @@ form {
 	border-radius: 5px;
 }
 .book-content .book-cover-image {
-	width: var(--book-width);
-	height: calc(var(--book-width)/0.75);
+	width: var(--book-width-large);
+	height: calc(var(--book-width-large)/0.75);
 }
 
 /* Error Messages */
@@ -379,4 +380,21 @@ form {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+/* Media queries for Ipad Pro */
+@media (min-width: 1000px) and (max-width: 1100px) {
+	.book-gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	#author-gallery {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	#book-details-card .book-content .book-cover-image {
+		width: var(--book-width);
+		height: calc(var(--book-width)/0.75);
+	}
+	#book-details-card .btn-group {
+		width: 60%;
+	}
 }
