@@ -37,7 +37,7 @@ This is Bookify, an online book library where users can manage their books and c
 ## Author Details
 <img src="screenshots/authordetails.png">
 
-## To Run 
+# To Run 
 1. Clone into repo
 2. Run ``` npm i ```
 3. Run ``` npm start ```
