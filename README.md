@@ -8,7 +8,7 @@ This is Bookify, an online book library where users can manage their books and c
 2. A book library can be maintained with respective authors.
 3. Supports file upload( for images ) which has been made possible by using Filepond( https://pqina.nl/filepond/ ). The images are stored on the database as they could not be stored on Heroku's server.
 
-# Built with :
+# Built with 
 
 ## Frontend 
 1. HTML5 ( EJS has been used as a template engine )
