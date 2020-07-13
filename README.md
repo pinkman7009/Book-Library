@@ -16,7 +16,7 @@ This is Bookify, an online book library where users can manage their books and c
 3. Javascript ( Client side for Filepond image uploads )
 
 ## Backend
-1. NodeJS
+1. Node.js
 2. Express
 3. MongoDB 
 
